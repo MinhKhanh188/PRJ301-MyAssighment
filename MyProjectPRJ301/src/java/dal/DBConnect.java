@@ -34,7 +34,7 @@ public class DBConnect {
     }
 
     public DBConnect() {
-        this("jdbc:sqlserver://localhost:1433;databaseName=PRJ301_FALL2023_Afternoon",
+        this("jdbc:sqlserver://localhost:1433;databaseName=GradingManagement",
                 "khanh188", "123456");
     }
     public ResultSet getData(String sql){
