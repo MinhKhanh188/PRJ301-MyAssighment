@@ -11,7 +11,6 @@ CREATE TABLE Users (
 -- Students Table: Stores information about students and links to user accounts.
 CREATE TABLE Students (
     student_id INT PRIMARY KEY,  -- Unique identifier for each student.
-    user_id INT UNIQUE,          -- Foreign Key referencing Users(user_id).
 );
 
 -- Teachers Table: Stores information about teachers and links to user accounts.
@@ -52,3 +51,15 @@ CREATE TABLE Grades (
     FOREIGN KEY (student_id) REFERENCES Students(student_id),  -- Establishes student relationship.
     FOREIGN KEY (enrollment_id) REFERENCES Enrollments(enrollment_id)  -- Establishes enrollment relationship.
 );
+
+
+
+
+-- Add columns to the Students table
+ALTER TABLE Students
+ADD student_name VARCHAR(100),
+    student_major VARCHAR(50),
+    student_gender VARCHAR(50),
+    student_dob VARCHAR(50);
+
+
