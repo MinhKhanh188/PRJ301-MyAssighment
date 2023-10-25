@@ -12,9 +12,14 @@ public class Students {
 
     private int student_id;
     private String student_name;
-    private String student_major;
-    private String student_gender;
-    private String student_dob;
+
+    public Students() {
+    }
+
+    public Students(int student_id, String student_name) {
+        this.student_id = student_id;
+        this.student_name = student_name;
+    }
 
     public int getStudent_id() {
         return student_id;
@@ -32,30 +37,4 @@ public class Students {
         this.student_name = student_name;
     }
 
-    public String getStudent_major() {
-        return student_major;
-    }
-
-    public void setStudent_major(String student_major) {
-        this.student_major = student_major;
-    }
-
-    public String getStudent_gender() {
-        return student_gender;
-    }
-
-    public void setStudent_gender(String student_gender) {
-        this.student_gender = student_gender;
-    }
-
-    public String getStudent_dob() {
-        return student_dob;
-    }
-
-    public void setStudent_dob(String student_dob) {
-        this.student_dob = student_dob;
-    }
-
-    
-    
 }
