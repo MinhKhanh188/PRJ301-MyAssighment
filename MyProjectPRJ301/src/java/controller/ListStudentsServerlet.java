@@ -5,6 +5,7 @@
 package controller;
 
 import dal.StudentDBConnect;
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,6 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.List;
 import model.Students;
 
 /**
@@ -34,10 +36,7 @@ public class ListStudentsServerlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        StudentDBConnect db = new StudentDBConnect();
-        ArrayList<Students> students = (ArrayList<Students>) db.getAllStudents();
-        request.setAttribute("students", students);
-        request.getRequestDispatcher("/StudentList.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -53,6 +52,13 @@ public class ListStudentsServerlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+
+        StudentDBConnect studentDBConnect = new StudentDBConnect();
+        List<Students> students = studentDBConnect.getAllStudents();
+        request.setAttribute("students", students);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/StudentList.jsp");
+        dispatcher.forward(request, response);
+
     }
 
     /**

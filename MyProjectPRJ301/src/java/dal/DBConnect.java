@@ -17,6 +17,7 @@ import java.util.logging.Logger;
  * @author sonnt
  */
 public class DBConnect {
+
     public Connection connection;
 
     public DBConnect(String url, String username, String pass) {
@@ -34,19 +35,20 @@ public class DBConnect {
     }
 
     public DBConnect() {
-        this("jdbc:sqlserver://localhost:1433;databaseName=GradingManagement",
+        this("jdbc:sqlserver://localhost:1433;databaseName=GradingManagement2",
                 "khanh188", "123456");
     }
-    public ResultSet getData(String sql){
-        ResultSet rs=null;
-         Statement state;
+
+    public ResultSet getData(String sql) {
+        ResultSet rs = null;
+        Statement state;
         try {
             state = connection.createStatement(
                     ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
-             rs = state.executeQuery(sql);
+            rs = state.executeQuery(sql);
         } catch (SQLException ex) {
-           ex.printStackTrace();
+            ex.printStackTrace();
         }
         return rs;
     }
@@ -55,10 +57,3 @@ public class DBConnect {
         new DBConnect();
     }
 }
-
-
-
-
-
-
-
