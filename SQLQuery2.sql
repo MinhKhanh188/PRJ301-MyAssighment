@@ -81,3 +81,8 @@ CREATE TABLE TotalResult (
     FOREIGN KEY (course_id) REFERENCES Courses(course_id)  -- Reference the course_id
 );
 
+
+-- Rename the column "subject_name" to "new_subject_name" in the "Courses" table
+ALTER TABLE Courses RENAME COLUMN subject_name TO course_code;
+
+
