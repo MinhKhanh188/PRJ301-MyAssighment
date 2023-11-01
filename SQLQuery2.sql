@@ -86,3 +86,10 @@ CREATE TABLE TotalResult (
 ALTER TABLE Courses RENAME COLUMN subject_name TO course_code;
 
 
+select * from Courses
+
+select * from Teachers
+
+select * from Users
+
+select * from Students

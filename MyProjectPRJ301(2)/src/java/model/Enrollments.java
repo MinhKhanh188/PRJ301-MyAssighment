@@ -13,20 +13,18 @@ public class Enrollments {
     private int enrollment_id;
     private int student_id;
     private int course_id;
-    private int enrollment_date;
+    private String enrollment_date;
     private Students students;
     private Courses courses;
 
     public Enrollments() {
     }
 
-    public Enrollments(int enrollment_id, int student_id, int course_id, int enrollment_date, Students students, Courses courses) {
+    public Enrollments(int enrollment_id, int student_id, int course_id, String enrollment_date) {
         this.enrollment_id = enrollment_id;
         this.student_id = student_id;
         this.course_id = course_id;
         this.enrollment_date = enrollment_date;
-        this.students = students;
-        this.courses = courses;
     }
 
     public int getEnrollment_id() {
@@ -53,11 +51,11 @@ public class Enrollments {
         this.course_id = course_id;
     }
 
-    public int getEnrollment_date() {
+    public String getEnrollment_date() {
         return enrollment_date;
     }
 
-    public void setEnrollment_date(int enrollment_date) {
+    public void setEnrollment_date(String enrollment_date) {
         this.enrollment_date = enrollment_date;
     }
 
