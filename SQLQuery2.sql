@@ -76,7 +76,7 @@ CREATE TABLE TotalResult (
 	FOREIGN KEY (grade_id) REFERENCES Grades(grade_id)-- Reference the course_id
 );
 
-drop TABLE TotalResult
+
 
 
 

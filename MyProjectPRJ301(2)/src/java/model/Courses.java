@@ -11,7 +11,7 @@ package model;
 public class Courses {
 
     private int course_id;
-    private String course_name;
+    private String subject_Code;
     private String subject_name;
     private String semester;
     private String start_date;
@@ -22,15 +22,14 @@ public class Courses {
     public Courses() {
     }
 
-    public Courses(int course_id, String course_name, String subject_name, String semester, String start_date, String end_date, int teacher_id, Teachers teachers) {
+    public Courses(int course_id, String subject_Code, String subject_name, String semester, String start_date, String end_date, int teacher_id) {
         this.course_id = course_id;
-        this.course_name = course_name;
+        this.subject_Code = subject_Code;
         this.subject_name = subject_name;
         this.semester = semester;
         this.start_date = start_date;
         this.end_date = end_date;
         this.teacher_id = teacher_id;
-        this.teachers = teachers;
     }
 
     public int getCourse_id() {
@@ -41,12 +40,12 @@ public class Courses {
         this.course_id = course_id;
     }
 
-    public String getCourse_name() {
-        return course_name;
+    public String getSubject_Code() {
+        return subject_Code;
     }
 
-    public void setCourse_name(String course_name) {
-        this.course_name = course_name;
+    public void setSubject_Code(String subject_Code) {
+        this.subject_Code = subject_Code;
     }
 
     public String getSubject_name() {
