@@ -14,6 +14,7 @@
         <h2>Enrollment Form</h2>
         <form action="EnrollmentServlet" method="post">
             Enrollment ID: <input type="text" name="enrollment_id"><br>
+            Class ID: <input type="text" name="class_id"><br>
             Student ID: <input type="text" name="student_id"><br>
             Course ID: <input type="text" name="course_id"><br>
             Enrollment Date: <input type="date" name="enrollment_date"><br>

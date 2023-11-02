@@ -11,6 +11,7 @@ package model;
 public class Enrollments {
 
     private int enrollment_id;
+    private int class_id;
     private int student_id;
     private int course_id;
     private String enrollment_date;
@@ -20,11 +21,13 @@ public class Enrollments {
     public Enrollments() {
     }
 
-    public Enrollments(int enrollment_id, int student_id, int course_id, String enrollment_date) {
+    public Enrollments(int enrollment_id, int class_id, int student_id, int course_id, String enrollment_date) {
         this.enrollment_id = enrollment_id;
+        this.class_id = class_id;
         this.student_id = student_id;
         this.course_id = course_id;
         this.enrollment_date = enrollment_date;
+
     }
 
     public int getEnrollment_id() {
@@ -33,6 +36,14 @@ public class Enrollments {
 
     public void setEnrollment_id(int enrollment_id) {
         this.enrollment_id = enrollment_id;
+    }
+
+    public int getClass_id() {
+        return class_id;
+    }
+
+    public void setClass_id(int class_id) {
+        this.class_id = class_id;
     }
 
     public int getStudent_id() {

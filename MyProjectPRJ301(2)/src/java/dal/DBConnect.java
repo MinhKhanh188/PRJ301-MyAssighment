@@ -34,7 +34,7 @@ public class DBConnect {
     }
 
     public DBConnect() {
-        this("jdbc:sqlserver://localhost:1433;databaseName=GradingManagement2",
+        this("jdbc:sqlserver://localhost:1433;databaseName=GradingManagement3",
                 "khanh188", "123456");
     }
     public ResultSet getData(String sql){

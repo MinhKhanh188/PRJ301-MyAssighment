@@ -36,12 +36,12 @@ public class EnrollmentServlet extends HttpServlet {
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             int enrollment_id = Integer.parseInt(request.getParameter("enrollment_id"));
+            int class_id = Integer.parseInt(request.getParameter("class_id"));
             int student_id = Integer.parseInt(request.getParameter("student_id"));
             int course_id = Integer.parseInt(request.getParameter("course_id"));
             String enrollment_date = request.getParameter("enrollment_date");
 
-            Enrollments enrollments = new Enrollments(enrollment_id, student_id, course_id, enrollment_date);
-
+            Enrollments enrollments = new Enrollments(enrollment_id, class_id, student_id, course_id, enrollment_date);
 
             EnrollmentsDBConnect dBConnect = new EnrollmentsDBConnect();
 

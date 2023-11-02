@@ -68,17 +68,16 @@ CREATE TABLE Grades (
 CREATE TABLE TotalResult (
     TotalResult_id INT PRIMARY KEY,
     course_id INT,  -- Use course_id as the foreign key
-    semester VARCHAR(50),
-    start_date DATE,
-    end_date DATE,
-    totalgrade DECIMAL(3, 1),
+	enrollment_id int,
+    grade_id int,
     status VARCHAR(100),
-    FOREIGN KEY (course_id) REFERENCES Courses(course_id)  -- Reference the course_id
+    FOREIGN KEY (course_id) REFERENCES Courses(course_id) ,
+	FOREIGN KEY (enrollment_id) REFERENCES Enrollments(enrollment_id),
+	FOREIGN KEY (grade_id) REFERENCES Grades(grade_id)-- Reference the course_id
 );
 
+drop TABLE TotalResult
 
--- Rename the column "subject_name" to "new_subject_name" in the "Courses" table
-ALTER TABLE Courses RENAME COLUMN subject_name TO course_code;
 
 
 select * from Courses
@@ -93,7 +92,7 @@ select * from Enrollments
 
 
 INSERT INTO [dbo].[Students] ([student_id], [student_name])
-VALUES (184524, 'Nguyen Huy Manh');
+VALUES (176285, N'Pham Minh Khanh');
 -- Generate and insert 10 random students with student_id between 152374 and 198945
 INSERT INTO [dbo].[Students] ([student_id], [student_name])
 VALUES
@@ -107,3 +106,43 @@ VALUES
     (177962, N'Pham Anh Hung'),
     (186376, N'Nguyen Van Inh'),
     (194790, N'Tran Thi Joker');
+
+	INSERT INTO [dbo].[Users]
+           ([user_id]
+           ,[username]
+           ,[password]
+           ,[user_type])
+     VALUES
+           (1,'admin','a',1),
+		    (2,'sonnt','sonnhieutiendepzai',2);
+
+INSERT INTO [dbo].[Teachers]
+           ([teacher_id]
+           ,[teacher_name]
+           ,[user_id])
+     VALUES
+          (1, 'Ngo Tung Son', 2);
+
+
+INSERT INTO [dbo].[Courses]
+           ([course_id]
+           ,[subject_Code]
+           ,[subject_name]
+           ,[semester]
+           ,[start_date]
+           ,[end_date]
+           ,[teacher_id])
+     VALUES
+           (6617,'PRJ301','Java Web Application Development', 'Fall23','2023-09-01','2023-12-15',1),
+		   (10173,'NWC203c','Computer Networking', 'Fall23','2023-09-15','2023-12-24',1),
+		   (9228,'JPD123','Computer Networking', 'Fall23','2023-09-15','2023-12-24',1),
+		   (10021,'LAB211','OOP with Java Lab', 'Fall23','2023-09-10','2023-12-24',1),
+		   (3674,'PRU211c','(Combo .Net: Option 3) C# Programming and Unity', 'Fall23','2023-09-10','2023-12-24',1),
+		   (9241,'MAD101','Discrete mathematics', 'Fall23','2023-09-03','2023-12-24',1),
+		   (10128,'PMG201c','Project Management', 'Fall23','2023-09-03','2023-12-24',1),
+		   (6291,'JIT401','Information Technology Japanese', 'Fall23','2023-09-03','2023-12-24',1),
+		   (10031,'IOT102','Internet of Things', 'Fall23','2023-11-01','2023-12-24',1),
+		   (6021,'JPD133','Elementary Japanese 1-A1/A2', 'Fall23','2023-09-01','2023-12-24',1),
+		   (10209,'PRN221','Advanced Cross-Platform Application Programming With .NET', 'Fall23','2023-09-01','2023-12-24',1),
+		   (9226,'JPD113','Elementary Japanese 1-A1.2', 'Fall23','2023-09-05','2023-12-15',1),
+		   (10005,'HCM202','HCM Ideology', 'Fall23','2023-09-05','2023-12-15',1);

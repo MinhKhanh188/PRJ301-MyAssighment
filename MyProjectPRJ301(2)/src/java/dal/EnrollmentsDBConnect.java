@@ -24,6 +24,7 @@ public class EnrollmentsDBConnect extends DBConnect {
     public List<Enrollments> getAll() {
         List<Enrollments> list = new ArrayList<>();
         String sql = "SELECT [enrollment_id]\n"
+                + "      ,[class_id]\n"
                 + "      ,[student_id]\n"
                 + "      ,[course_id]\n"
                 + "      ,[enrollment_date]\n"
@@ -34,6 +35,7 @@ public class EnrollmentsDBConnect extends DBConnect {
             while (rs.next()) {
                 Enrollments e = new Enrollments();
                 e.setEnrollment_id(rs.getInt("enrollment_id"));
+                e.setClass_id(rs.getInt("class_id"));
 
                 Students s = new Students();
                 s.setStudent_id(rs.getInt("student_id"));
@@ -60,19 +62,18 @@ public class EnrollmentsDBConnect extends DBConnect {
             connection.setAutoCommit(false);
             String sql_insert = "INSERT INTO [dbo].[Enrollments]\n"
                     + "           ([enrollment_id]\n"
+                    + "           ,[class_id]\n"
                     + "           ,[student_id]\n"
                     + "           ,[course_id]\n"
                     + "           ,[enrollment_date])\n"
                     + "     VALUES\n"
-                    + "           (?\n"
-                    + "		  , ?\n"
-                    + "		  , ?\n"
-                    + "		  , ?)";
+                    + "           (?,?,?,?,?)";
             PreparedStatement stm_insert = connection.prepareStatement(sql_insert);
             stm_insert.setInt(1, model.getEnrollment_id());
-            stm_insert.setInt(2, model.getStudent_id());
-            stm_insert.setInt(3, model.getCourse_id());
-            stm_insert.setString(4, model.getEnrollment_date());
+            stm_insert.setInt(2, model.getClass_id());
+            stm_insert.setInt(3, model.getStudent_id());
+            stm_insert.setInt(4, model.getCourse_id());
+            stm_insert.setString(5, model.getEnrollment_date());
 
             stm_insert.executeUpdate();
             connection.commit();
