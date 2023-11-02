@@ -38,6 +38,7 @@ CREATE TABLE Courses (
 
 
 
+
 -- Enrollments Table
 CREATE TABLE Enrollments (
     enrollment_id INT PRIMARY KEY,
@@ -48,6 +49,9 @@ CREATE TABLE Enrollments (
     FOREIGN KEY (student_id) REFERENCES Students(student_id),
     FOREIGN KEY (course_id) REFERENCES Courses(course_id)
 );
+
+
+
 
 -- Grades Table
 CREATE TABLE Grades (

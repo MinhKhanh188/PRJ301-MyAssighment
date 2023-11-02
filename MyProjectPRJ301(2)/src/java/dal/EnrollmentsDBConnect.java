@@ -8,7 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Courses;
@@ -96,6 +98,45 @@ public class EnrollmentsDBConnect extends DBConnect {
                 Logger.getLogger(EnrollmentsDBConnect.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    public List<Students> getStudentsInClass(int classId) {
+        List<Students> studentsInClass = new ArrayList<>();
+        String sql = "SELECT DISTINCT S.[student_id], S.[student_name]\n"
+                + "FROM [dbo].[Enrollments] AS E\n"
+                + "JOIN [dbo].[Students] AS S ON E.[student_id] = S.[student_id]\n"
+                + "WHERE E.[class_id] = ?";
+
+        try ( PreparedStatement st = connection.prepareStatement(sql)) {
+            st.setInt(1, classId);
+            try ( ResultSet rs = st.executeQuery()) {
+                while (rs.next()) {
+                    Students student = new Students();
+                    student.setStudent_id(rs.getInt("student_id"));
+                    student.setStudent_name(rs.getString("student_name"));
+                    studentsInClass.add(student);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return studentsInClass;
+    }
+
+    public Set<Integer> getUniqueClassIds() {
+        Set<Integer> uniqueClassIds = new HashSet<>();
+        String sql = "SELECT DISTINCT [class_id] FROM [dbo].[Enrollments]";
+
+        try ( PreparedStatement st = connection.prepareStatement(sql);  ResultSet rs = st.executeQuery()) {
+            while (rs.next()) {
+                uniqueClassIds.add(rs.getInt("class_id"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return uniqueClassIds;
     }
 
 }
