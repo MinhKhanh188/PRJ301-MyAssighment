@@ -1,6 +1,6 @@
 -- Create database GradingManagement2
-CREATE DATABASE GradingManagement2;
-USE GradingManagement2;
+CREATE DATABASE GradingManagement3;
+USE GradingManagement3;
 
 -- Users Table
 CREATE TABLE Users (
@@ -27,8 +27,8 @@ CREATE TABLE Teachers (
 -- Courses Table
 CREATE TABLE Courses (
     course_id INT PRIMARY KEY,
-    course_name VARCHAR(100),
-    subject_name VARCHAR(100),
+    subject_Code VARCHAR(100),
+    subject_name VARCHAR(1000),
     semester VARCHAR(50),
     start_date DATE,
     end_date DATE,
@@ -36,17 +36,12 @@ CREATE TABLE Courses (
     FOREIGN KEY (teacher_id) REFERENCES Teachers(teacher_id)
 );
 
--- StudentCourses Table
-CREATE TABLE StudentCourses (
-    student_id INT,
-    course_id INT,
-    FOREIGN KEY (student_id) REFERENCES Students(student_id),
-    FOREIGN KEY (course_id) REFERENCES Courses(course_id)
-);
+
 
 -- Enrollments Table
 CREATE TABLE Enrollments (
     enrollment_id INT PRIMARY KEY,
+	class_id int,
     student_id INT,
     course_id INT,
     enrollment_date DATE,
@@ -93,3 +88,22 @@ select * from Teachers
 select * from Users
 
 select * from Students
+
+select * from Enrollments
+
+
+INSERT INTO [dbo].[Students] ([student_id], [student_name])
+VALUES (184524, 'Nguyen Huy Manh');
+-- Generate and insert 10 random students with student_id between 152374 and 198945
+INSERT INTO [dbo].[Students] ([student_id], [student_name])
+VALUES
+    (152374, N'Nguyen Van Anh'),
+    (160789, N'Tran Thi Bich'),
+    (168521, N'Le Duc Cong'),
+    (176935, N'Pham Anh Danh'),
+    (185249, N'Nguyen Van To Anh'),
+    (161234, N'Tran Thi Fo'),
+    (169648, N'Le Duc Giang'),
+    (177962, N'Pham Anh Hung'),
+    (186376, N'Nguyen Van Inh'),
+    (194790, N'Tran Thi Joker');
