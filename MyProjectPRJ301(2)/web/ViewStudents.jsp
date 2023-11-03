@@ -8,23 +8,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Students in Class</title>
-</head>
-<body>
-    <h1>Students in Class ${classId}</h1>
-    <table border="1">
-        <tr>
-            <th>Student ID</th>
-            <th>Student Name</th>
-        </tr>
-        <c:forEach var="student" items="${studentsInClass}">
+    <head>
+        <title>Students in Class</title>
+    </head>
+    <body>
+        <h1>Students in Class ${classId}</h1>
+        <table border="1">
             <tr>
-                <td>${student.student_id}</td>
-                <td>${student.student_name}</td>
+                <th>Student ID</th>
+                <th>Student Name</th>
             </tr>
-        </c:forEach>
-    </table>
-</body>
+            <c:forEach var="student" items="${studentsInClass}">
+                <tr>
+                    <td>${student.student_id}</td>
+                    <td>${student.student_name}</td>
+                    <td><a href="EnterGrades.jsp?classId=${classId}&studentId=${student.student_id}">Enter Grades</a></td>
+                </tr>
+            </c:forEach>
+
+        </table>
+    </body>
 </html>
 

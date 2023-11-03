@@ -53,9 +53,9 @@ CREATE TABLE Enrollments (
 
 
 
--- Grades Table
+-- Grades Table with auto-increment primary key
 CREATE TABLE Grades (
-    grade_id INT PRIMARY KEY,
+    grade_id INT IDENTITY(1,1) PRIMARY KEY,
     student_id INT,
     enrollment_id INT,
     assignment1 DECIMAL(3, 1),
@@ -67,6 +67,10 @@ CREATE TABLE Grades (
     FOREIGN KEY (student_id) REFERENCES Students(student_id),
     FOREIGN KEY (enrollment_id) REFERENCES Enrollments(enrollment_id)
 );
+
+drop table Grades
+drop table TotalResult
+
 
 -- TotalResult Table
 CREATE TABLE TotalResult (
@@ -84,6 +88,8 @@ CREATE TABLE TotalResult (
 
 
 
+
+
 select * from Courses
 
 select * from Teachers
@@ -93,6 +99,9 @@ select * from Users
 select * from Students
 
 select * from Enrollments
+
+select * from Grades
+
 
 
 INSERT INTO [dbo].[Students] ([student_id], [student_name])
